@@ -13,8 +13,14 @@ Deque::Deque() { //Asligul
 ///------------------------------------------------------
 /// Destructor
 /// 
-Deque::~Deque() {//Elif
-
+Deque::~Deque() { // Elif
+	while (head != NULL) {
+		DequeNode* temp = head;
+		head = head->next;
+		delete temp;
+	}
+	tail = NULL;
+	noOfItems = 0;
 }
 
 ///------------------------------------------------------
@@ -39,7 +45,7 @@ void Deque::AddFront(int item) { //Asligul
 /// 
 void Deque::AddRear(int item) {     //Özge
 	DequeNode *n = new DequeNode(item);
-    n->item = item;
+    n->item=item;
     n->next = nullptr;
     n->prev = nullptr;
 
@@ -90,6 +96,7 @@ int Deque::RemoveRear() {//Elif
 		tail=tail->prev;
 		if(tail!=NULL)
 		tail->next=NULL;
+		else head=NULL;
 		delete temp;
 			noOfItems--;
 		return tempData;
@@ -107,7 +114,7 @@ int Deque::Front() {    //Özge
     else {
         return head->item;
     }
-	return 0;
+
 } //end-Front
 
 ///------------------------------------------------------
@@ -121,5 +128,5 @@ int Deque::Rear() {     //Özge
     else {
         return tail->item;
     }
-	return 0;
+
 } //end-Rear
