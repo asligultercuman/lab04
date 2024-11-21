@@ -58,7 +58,7 @@ void Deque::AddRear(int item) {     //Özge
 /// 
 int Deque::RemoveFront() { //Asligul
 	if (head == NULL)
-	throw(0);
+		throw std::runtime_error("Deque is empty!");
 
 	int tempData = head->item;
 	DequeNode* temp = head; 
@@ -68,7 +68,7 @@ int Deque::RemoveFront() { //Asligul
 	if (head != NULL)
 		head->prev = NULL;
 	else
-		tail = NULL; //edge case : the removed part could be the last node of the list
+		tail = NULL; //edge case : the removed part could be the last node
 
 	delete temp;
 	return tempData;
