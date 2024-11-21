@@ -13,9 +13,9 @@ Deque::Deque() { //Asligul
 ///------------------------------------------------------
 /// Destructor
 /// 
-Deque::~Deque() {
-	// Fill this in
-} //end-~Deque
+Deque::~Deque() {//Elif
+
+}
 
 ///------------------------------------------------------
 /// Adds a new item to the front of the Deque
@@ -31,6 +31,7 @@ void Deque::AddFront(int item) { //Asligul
 		head->prev = n;
 		head = n;
 	}
+	noOfItems++;
 } //end-AddFront
 
 ///------------------------------------------------------
@@ -50,6 +51,7 @@ void Deque::AddRear(int item) {     //Özge
        n->prev = tail;
        tail = n;
     }
+    	noOfItems++;
 } //end-AddRear
 
 ///------------------------------------------------------
@@ -71,7 +73,9 @@ int Deque::RemoveFront() { //Asligul
 		tail = NULL; //edge case : the removed part could be the last node
 
 	delete temp;
+		noOfItems--;
 	return tempData;
+
 } //end-RemoveFront
 
 ///------------------------------------------------------
@@ -87,7 +91,9 @@ int Deque::RemoveRear() {//Elif
 		if(tail!=NULL)
 		tail->next=NULL;
 		delete temp;
+			noOfItems--;
 		return tempData;
+	
 } //end-RemoveRear
 
 ///------------------------------------------------------
