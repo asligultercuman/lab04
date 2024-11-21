@@ -48,7 +48,7 @@ void Deque::AddRear(int item) {     //Özge
     else {
        tail->next = n;
        n->prev = tail;
-       tail = p;
+       tail = n;
     }
 } //end-AddRear
 
