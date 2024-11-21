@@ -89,7 +89,7 @@ int Deque::RemoveRear() {
 /// 
 int Deque::Front() {    //Özge
 	if(head==nullptr){
-     throw std::runtime_error("Dequeue<Test>::Front: Empty queue");
+     throw std::runtime_error("Deque is empty!");
     }
     else {
         return head->item;
@@ -103,7 +103,7 @@ int Deque::Front() {    //Özge
 /// 
 int Deque::Rear() {     //Özge
 	if(tail==nullptr){
-        throw std::runtime_error("Dequeue<T>::Rear: Empty queue");
+        throw std::runtime_error("Deque is empty!");
     }
     else {
         return tail->item;
