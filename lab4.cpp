@@ -78,9 +78,16 @@ int Deque::RemoveFront() { //Asligul
 /// Remove and return the item at the rear of the Deque
 /// If the Deque is empty, throw an exception
 /// 
-int Deque::RemoveRear() {
-	// Fill this in
-	return 0;
+int Deque::RemoveRear() {//Elif
+	if(tail==NULL)
+		throw std::runtime_error("Deque is empty!");
+		int tempData=tail->item;
+		DequeNode*temp=tail;
+		tail=tail->prev;
+		if(tail!=NULL)
+		tail->next=NULL;
+		delete temp;
+		return tempData;
 } //end-RemoveRear
 
 ///------------------------------------------------------
