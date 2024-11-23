@@ -13,9 +13,15 @@ Deque::Deque() { //Asligul
 ///------------------------------------------------------
 /// Destructor
 /// 
-Deque::~Deque() {
-	// Fill this in
-} //end-~Deque
+Deque::~Deque() { // Elif
+	while (head != NULL) {
+		DequeNode* temp = head;
+		head = head->next;
+		delete temp;
+	}
+	tail = NULL;
+	noOfItems = 0;
+}
 
 ///------------------------------------------------------
 /// Adds a new item to the front of the Deque
@@ -31,6 +37,7 @@ void Deque::AddFront(int item) { //Asligul
 		head->prev = n;
 		head = n;
 	}
+	noOfItems++;
 } //end-AddFront
 
 ///------------------------------------------------------
@@ -38,7 +45,7 @@ void Deque::AddFront(int item) { //Asligul
 /// 
 void Deque::AddRear(int item) {     //Özge
 	DequeNode *n = new DequeNode(item);
-    n->item = item;
+    n->item=item;
     n->next = nullptr;
     n->prev = nullptr;
 
@@ -50,6 +57,7 @@ void Deque::AddRear(int item) {     //Özge
        n->prev = tail;
        tail = n;
     }
+    	noOfItems++;
 } //end-AddRear
 
 ///------------------------------------------------------
@@ -71,16 +79,28 @@ int Deque::RemoveFront() { //Asligul
 		tail = NULL; //edge case : the removed part could be the last node
 
 	delete temp;
+		noOfItems--;
 	return tempData;
+
 } //end-RemoveFront
 
 ///------------------------------------------------------
 /// Remove and return the item at the rear of the Deque
 /// If the Deque is empty, throw an exception
 /// 
-int Deque::RemoveRear() {
-	// Fill this in
-	return 0;
+int Deque::RemoveRear() {//Elif
+	if(tail==NULL)
+		throw std::runtime_error("Deque is empty!");
+		int tempData=tail->item;
+		DequeNode*temp=tail;
+		tail=tail->prev;
+		if(tail!=NULL)
+		tail->next=NULL;
+		else head=NULL;
+		delete temp;
+			noOfItems--;
+		return tempData;
+	
 } //end-RemoveRear
 
 ///------------------------------------------------------
@@ -94,7 +114,7 @@ int Deque::Front() {    //Özge
     else {
         return head->item;
     }
-	return 0;
+
 } //end-Front
 
 ///------------------------------------------------------
@@ -108,5 +128,5 @@ int Deque::Rear() {     //Özge
     else {
         return tail->item;
     }
-	return 0;
+
 } //end-Rear
